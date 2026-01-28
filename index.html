@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthTrack Pro - Personal Health Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-top">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="company-name">HealthTrack Pro</div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#tips">Health Tips</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#game">Game</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Monitor Your Health with Ease</h1>
+            <p>Advanced and Trusted Personal Health Dashboard</p>
+            <button class="cta-button" onclick="scrollToDashboard()">Get Started Now</button>
+        </div>
+    </section>
+
+    <!-- Health Dashboard -->
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <h2 class="section-title">Your Health Dashboard</h2>
+            <div class="health-cards">
+                <div class="health-card">
+                    <div class="edit-icon" onclick="openUpdateModal()" title="Update Health Data">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Heart Rate</h3>
+                    <div class="health-value" id="heartRate">75</div>
+                    <p>BPM</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="heartProgress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="health-card">
+                    <i class="fas fa-running"></i>
+                    <h3>Steps Today</h3>
+                    <div class="health-value" id="steps">8,542</div>
+                    <p>of 10,000 target</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="stepsProgress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="health-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Calories Burned</h3>
+                    <div class="health-value" id="calories">1,850</div>
+                    <p>kcal</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="caloriesProgress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="health-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Sleep Quality</h3>
+                    <div class="health-value" id="sleep">7.5</div>
+                    <p>hours</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="sleepProgress" style="width: 94%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Update Health Data Modal -->
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeUpdateModal()">&times;</span>
+            <h2>Update Health Data</h2>
+            <form id="healthForm" onsubmit="updateHealthData(event)">
+                <div class="form-group">
+                    <label for="inputHeartRate"><i class="fas fa-heartbeat"></i> Heart Rate (BPM)</label>
+                    <input type="number" id="inputHeartRate" min="40" max="200" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputSteps"><i class="fas fa-running"></i> Steps Today</label>
+                    <input type="number" id="inputSteps" min="0" max="50000" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputCalories"><i class="fas fa-fire"></i> Calories Burned (kcal)</label>
+                    <input type="number" id="inputCalories" min="0" max="5000" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputSleep"><i class="fas fa-bed"></i> Sleep Hours</label>
+                    <input type="number" id="inputSleep" min="0" max="24" step="0.1" required>
+                </div>
+                <button type="submit" class="update-button">Update Data</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Testimonials Carousel -->
+    <section id="testimonials" class="testimonial-section">
+        <div class="container">
+            <h2 class="section-title">User Testimonials</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Sarah Johnson">
+                        </div>
+                        <p class="testimonial-text">"HealthTrack Pro helps me manage my healthy lifestyle easily. The intuitive dashboard keeps me motivated every day!"</p>
+                        <p class="testimonial-author">- Sarah Johnson</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="Michael Chen">
+                        </div>
+                        <p class="testimonial-text">"Complete tracking features and interactive games make my health journey enjoyable. Highly recommended!"</p>
+                        <p class="testimonial-author">- Michael Chen</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="https://i.pravatar.cc/150?img=47" alt="Dr. Amanda Lee">
+                        </div>
+                        <p class="testimonial-text">"As a doctor, I recommend HealthTrack Pro to my patients. A very helpful platform for health monitoring!"</p>
+                        <p class="testimonial-author">- Dr. Amanda Lee</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls" id="carouselControls">
+                    <button class="carousel-btn prev-btn" onclick="previousSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots">
+                        <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+                        <span class="carousel-dot" onclick="goToSlide(1)"></span>
+                        <span class="carousel-dot" onclick="goToSlide(2)"></span>
+                    </div>
+                    <button class="carousel-btn next-btn" onclick="nextSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Tips Accordion -->
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Health Tips</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><i class="fas fa-tint"></i> 1. Drink Enough Water</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Drinking at least 8 glasses of water per day (about 2 liters) is essential for maintaining body functions. Water helps regulate body temperature, aids digestion, and maintains skin health. Increase water intake when exercising or in hot weather.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><i class="fas fa-dumbbell"></i> 2. Regular Exercise</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Engage in physical activity for at least 30 minutes every day. Regular exercise helps maintain ideal body weight, improves heart health, reduces stress, and enhances sleep quality. Choose exercises you enjoy for better consistency.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><i class="fas fa-moon"></i> 3. Quality Sleep</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Getting 7-9 hours of sleep every night is crucial for body recovery. Create a consistent sleep routine, avoid gadgets 1 hour before bed, and create a comfortable and dark sleeping environment to improve rest quality.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><i class="fas fa-utensils"></i> 4. Balanced Diet</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Consume nutritious food with proper portions. Increase vegetables, fruits, lean protein, and whole grains. Reduce sugar, salt, and saturated fat consumption. Eat regularly and don't skip breakfast.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><i class="fas fa-spa"></i> 5. Manage Stress</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Practice stress management techniques such as meditation, yoga, or deep breathing. Make time for hobbies, socialize with loved ones, and don't hesitate to seek professional help if needed. Well-managed stress improves overall quality of life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section id="videos" class="youtube-section">
+        <div class="container">
+            <h2 class="section-title">Health Education Videos</h2>
+            <div class="video-grid">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/aUaInS6HIGo" 
+                        title="Health Tips Video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    <p class="video-description">10 Healthy Habits for a Better Life</p>
+                </div>
+                <div class="video-container">
+<iframe 
+  src="https://www.youtube.com/embed/_jgxUfwkUHE"
+  title="Tips for Teens | Teen Health"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+                    <p class="video-description">Complete Nutrition Guide</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: #666;">
+                <i class="fab fa-youtube"></i> Watch our educational videos for more complete health tips
+            </p>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="game" class="game-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-gamepad"></i> Interactive Game - Memory Match</h2>
+            <div class="game-container">
+                <div class="game-info">
+                    <p>Match cards with the same health icons!</p>
+                    <div class="game-score">
+                        <strong><i class="fas fa-mouse-pointer"></i> Moves:</strong> <span id="moves">0</span> | 
+                        <strong><i class="fas fa-check-circle"></i> Pairs Found:</strong> <span id="matches">0</span>/8
+                    </div>
+                </div>
+                <div class="game-grid" id="gameGrid"></div>
+                <button class="reset-button" onclick="resetGame()">
+                    <i class="fas fa-redo"></i> Reset Game
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-heart"></i> About HealthTrack Pro</h3>
+                <p>HealthTrack Pro is a leading platform for personal health monitoring. We are committed to helping you achieve a healthy lifestyle with cutting-edge technology.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-newspaper"></i> Health Articles</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Benefits of Morning Exercise</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Healthy Diet Menu</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> How to Overcome Insomnia</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Tips for Maintaining Immunity</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Importance of Regular Check-ups</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-concierge-bell"></i> Our Services</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Health Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Online Consultation</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Workout Programs</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Meal Planning</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Health Tracker App</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Healthy Street, Jakarta, Indonesia</p>
+                    <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@healthtrackpro.com</p>
+                    <p><i class="fas fa-clock"></i> Monday - Friday: 08:00 AM - 05:00 PM WIB</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 HealthTrack Pro. All Rights Reserved. | <a href="#" style="color: #667eea;">Privacy Policy</a> | <a href="#" style="color: #667eea;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
